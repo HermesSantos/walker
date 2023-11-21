@@ -15,7 +15,7 @@ import { makeHost } from './helpers/host.js'
     email: generateEmail(),
     brand: makeHost()
   }
-  console.log('Empresa criada: ', data)
+  console.log('Parceiro criado: ', data)
   const browser = await puppeteer.launch({
     headless: false
   });
