@@ -18,7 +18,7 @@ Este guia fornece um passo a passo para configurar e executar o projeto. Certifi
 
 4. **Configuração do Arquivo walker.js**: No arquivo `/src/walker.js`, na linha 51, adicione o caminho para um arquivo PDF no seu sistema. Isso é necessário para a execução correta do projeto.
 
-5. **Configuração do Arquivo walker.js**: No arquivo `/src/walker.js`, na linha 24, subsitua a URL para a URL desejada (localhost também funciona). Isso é necessário para a execução correta do projeto.
+5. **Configuração do Arquivo walker.js**: No arquivo `/src/walker.js`, na linha 34, subsitua a URL para a URL desejada (localhost também funciona). Isso é necessário para a execução correta do projeto.
 
 ## Execução
 

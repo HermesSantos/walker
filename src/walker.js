@@ -15,13 +15,14 @@ import { makeHost } from './helpers/host.js'
     email: generateEmail(),
     brand: makeHost()
   }
+  const url = 'http://localhost:8080'
   console.log('Parceiro criado: ', data)
   const browser = await puppeteer.launch({
     headless: false
   });
   const page = await browser.newPage();
 
-  await page.goto('http://localhost:8080/cadastro-parceiro');
+  await page.goto(url);
 
   await page.setViewport({ width: 1080, height: 1024 });
 
