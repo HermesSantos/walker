@@ -47,7 +47,7 @@ async function walkerPartner() {
   // converte o caminho para um caminho absoluto do arquivo
   const filePath = path.resolve('sample.pdf')
 
-  const url = `${urlparceiro}/cadastro-parceiro`
+  const url = `${urlInbraep}/cadastro-parceiro`
 
   console.log('Parceiro criado: ', data)
   const browser = await puppeteer.launch({
