@@ -102,23 +102,23 @@ const walkerCreator = () => {
     ])
     .then(answers => {
       if (answers.choices === 'Parceiro') {
-        for (let i = 0; i <= counter; i++) {
+        for (let i = 0; i < counter; i++) {
           walkerPartner()
         }
       } else if (answers.choices === 'Parceiro Cliente PJ') {
-        for (let i = 0; i <= counter; i++) {
+        for (let i = 0; i < counter; i++) {
           walkerClientPartnerPJ()
         }
       } else if (answers.choices === 'Parceiro Cliente PF') {
-        for (let i = 0; i <= counter; i++) {
+        for (let i = 0; i < counter; i++) {
           walkerClientPartnerPF()
         }
       } else if (answers.choices === 'Cliente Inbraep PF') {
-        for (let i = 0; i <= counter; i++) {
+        for (let i = 0; i < counter; i++) {
           walkerInbraepClientPF()
         }
       } else if (answers.choices === 'Cliente Inbraep PJ') {
-        for (let i = 0; i <= counter; i++) {
+        for (let i = 0; i < counter; i++) {
           walkerInbraepClientPJ()
         }
       }
