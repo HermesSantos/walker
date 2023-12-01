@@ -32,8 +32,8 @@ inquirer.
     }
   })
 
-const urlInbraep = 'http://localhost:8081'
-const urlparceiro = 'http://localhost:8080'
+const urlInbraep = 'https://aprovados.treinamento.online'
+const urlparceiro = 'https://gocursos.treinamento.online'
 
 async function walkerPartner() {
   const data = {
