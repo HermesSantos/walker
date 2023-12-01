@@ -11,6 +11,7 @@ import { makeHost } from './helpers/host.js'
 
 let urlInbraep = ''
 let urlparceiro = ''
+let counter = 1
 
 const walkerInitial = () => {
   inquirer.
@@ -56,7 +57,7 @@ const walkerAdminDomain = () => {
     ])
     .then(answer => {
       urlInbraep = `https://${answer.Domain}.treinamento.online`
-      walkerCreator()
+      walkerMassCreation()
     })
 }
 const walkerPortAdmin = () => {
@@ -85,7 +86,8 @@ const walkerPortPartner = () => {
     ])
     .then(answer => {
       urlparceiro = `${urlparceiro}:${answer.Port}`
-      walkerCreator()
+      walkerMassCreation()
+      // walkerCreator()
     })
 }
 const walkerCreator = () => {
@@ -100,20 +102,60 @@ const walkerCreator = () => {
     ])
     .then(answers => {
       if (answers.choices === 'Parceiro') {
-        walkerPartner()
+        for (let i = 0; i <= counter; i++) {
+          walkerPartner()
+        }
       } else if (answers.choices === 'Parceiro Cliente PJ') {
-        walkerClientPartnerPJ()
+        for (let i = 0; i <= counter; i++) {
+          walkerClientPartnerPJ()
+        }
       } else if (answers.choices === 'Parceiro Cliente PF') {
-        walkerClientPartnerPF()
+        for (let i = 0; i <= counter; i++) {
+          walkerClientPartnerPF()
+        }
       } else if (answers.choices === 'Cliente Inbraep PF') {
-        walkerInbraepClientPF()
+        for (let i = 0; i <= counter; i++) {
+          walkerInbraepClientPF()
+        }
       } else if (answers.choices === 'Cliente Inbraep PJ') {
-        walkerInbraepClientPJ()
+        for (let i = 0; i <= counter; i++) {
+          walkerInbraepClientPJ()
+        }
       }
     })
 }
-
-
+const walkerMassCreationCounter = () => {
+  inquirer.
+    prompt([
+      {
+        type: 'input',
+        name: 'counter',
+        message: 'Quantos pretende criar? (Informe um número razoável para não travar seu PC): ',
+      }
+    ])
+    .then(answer => {
+      counter = answer.counter
+      walkerCreator()
+    })
+}
+const walkerMassCreation = () => {
+  inquirer.
+    prompt([
+      {
+        type: 'list',
+        name: 'massRegister',
+        message: 'Será cadastro em massa?',
+        choices: ['Não', 'Sim']
+      }
+    ])
+    .then(answer => {
+      if (answer.massRegister === 'Sim') {
+        walkerMassCreationCounter()
+      } else {
+        walkerCreator()
+      }
+    })
+}
 async function walkerPartner() {
   const data = {
     name: getName(),
