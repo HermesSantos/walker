@@ -6,7 +6,7 @@ import { generatePhoneNumber } from './helpers/phone.js';
 import { generateEmail } from './helpers/email.js';
 import { makeHost } from './helpers/host.js'
 
-(async () => {
+async function walker() {
   const data = {
     name: getName(),
     cnpj: generateCnpj(),
@@ -15,7 +15,7 @@ import { makeHost } from './helpers/host.js'
     email: generateEmail(),
     brand: makeHost()
   }
-  const url = 'http://localhost:8080'
+  const url = 'http://localhost:8081/cadastro-parceiro'
   console.log('Parceiro criado: ', data)
   const browser = await puppeteer.launch({
     headless: false
@@ -72,4 +72,8 @@ import { makeHost } from './helpers/host.js'
   await page.click('button.btn.btn-lg.btn-primary');
   // descomenta aqui se quiser fechar o browser depois que faz o parceiro
   // await browser.close();
-})();
+}
+
+// (async () => {
+// })();
+walker()
