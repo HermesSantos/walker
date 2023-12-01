@@ -9,31 +9,110 @@ import { generateEmail } from './helpers/email.js';
 import { makeHost } from './helpers/host.js'
 
 
-inquirer.
-  prompt([
-    {
-      name: 'choices',
-      message: 'Criar usuário para: ',
-      type: 'list',
-      choices: ['Parceiro', 'Parceiro Cliente PJ', 'Parceiro Cliente PF', 'Cliente Inbraep PF', 'Cliente Inbraep PJ']
-    }
-  ])
-  .then(answers => {
-    if (answers.choices === 'Parceiro') {
-      walkerPartner()
-    } else if (answers.choices === 'Parceiro Cliente PJ') {
-      walkerClientPartnerPJ()
-    } else if (answers.choices === 'Parceiro Cliente PF') {
-      walkerClientPartnerPF()
-    } else if (answers.choices === 'Cliente Inbraep PF') {
-      walkerInbraepClientPF()
-    } else if (answers.choices === 'Cliente Inbraep PJ') {
-      walkerInbraepClientPJ()
-    }
-  })
+let urlInbraep = ''
+let urlparceiro = ''
 
-const urlInbraep = 'https://aprovados.treinamento.online'
-const urlparceiro = 'https://gocursos.treinamento.online'
+const walkerInitial = () => {
+  inquirer.
+    prompt([
+      {
+        type: 'list',
+        name: 'Enviroment',
+        message: 'Em qual ambiente o usuário será criado?',
+        choices: ['Local', 'Produção']
+      }
+    ]).then(choice => {
+      if (choice.Enviroment === 'Local') {
+        urlInbraep = 'http://localhost'
+        urlparceiro = 'http://localhost'
+        walkerPortAdmin()
+      } else if (choice.Enviroment === 'Produção') {
+        walkerPartnerDomain()
+      }
+    })
+}
+const walkerPartnerDomain = () => {
+  inquirer.
+    prompt([
+      {
+        type: 'input',
+        name: 'Domain',
+        message: 'Qual o domínio do parceiro?: ',
+      }
+    ])
+    .then(answer => {
+      urlparceiro = `https://${answer.Domain}.treinamento.online`
+      walkerAdminDomain()
+    })
+}
+const walkerAdminDomain = () => {
+  inquirer.
+    prompt([
+      {
+        type: 'input',
+        name: 'Domain',
+        message: 'Qual o domínio do admin Inbraep?: ',
+      }
+    ])
+    .then(answer => {
+      urlInbraep = `https://${answer.Domain}.treinamento.online`
+      walkerCreator()
+    })
+}
+const walkerPortAdmin = () => {
+  inquirer.
+    prompt([
+      {
+        type: 'input',
+        name: 'Port',
+        message: 'Qual a porta local para o admin Inbraep?: ',
+      }
+    ])
+    .then(answer => {
+      urlInbraep = `${urlInbraep}:${answer.Port}`
+      walkerPortPartner()
+    })
+}
+
+const walkerPortPartner = () => {
+  inquirer.
+    prompt([
+      {
+        type: 'input',
+        name: 'Port',
+        message: 'Qual a porta local para o parceiro?: ',
+      }
+    ])
+    .then(answer => {
+      urlparceiro = `${urlparceiro}:${answer.Port}`
+      walkerCreator()
+    })
+}
+const walkerCreator = () => {
+  inquirer.
+    prompt([
+      {
+        name: 'choices',
+        message: 'Criar usuário para: ',
+        type: 'list',
+        choices: ['Parceiro', 'Parceiro Cliente PJ', 'Parceiro Cliente PF', 'Cliente Inbraep PF', 'Cliente Inbraep PJ']
+      }
+    ])
+    .then(answers => {
+      if (answers.choices === 'Parceiro') {
+        walkerPartner()
+      } else if (answers.choices === 'Parceiro Cliente PJ') {
+        walkerClientPartnerPJ()
+      } else if (answers.choices === 'Parceiro Cliente PF') {
+        walkerClientPartnerPF()
+      } else if (answers.choices === 'Cliente Inbraep PF') {
+        walkerInbraepClientPF()
+      } else if (answers.choices === 'Cliente Inbraep PJ') {
+        walkerInbraepClientPJ()
+      }
+    })
+}
+
 
 async function walkerPartner() {
   const data = {
@@ -278,3 +357,4 @@ async function walkerInbraepClientPJ() {
   // descomenta aqui se quiser fechar o browser depois que faz o parceiro
   // await browser.close();
 }
+walkerInitial()
