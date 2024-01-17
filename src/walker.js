@@ -26,9 +26,29 @@ const walkerInitial = () => {
       if (choice.Enviroment === 'Local') {
         urlInbraep = 'http://localhost'
         urlparceiro = 'http://localhost'
-        walkerPortAdmin()
+        walkerDefaultPort()
       } else if (choice.Enviroment === 'Produção') {
         walkerPartnerDomain()
+      }
+    })
+}
+const walkerDefaultPort = () => {
+  inquirer.
+    prompt([
+      {
+        name: 'choices',
+        message: 'Usar domínios padrões, 8080 para Adm Inbraep e 8081 para Parceiro?',
+        type: 'list',
+        choices: ['Sim', 'Não']
+      }
+    ])
+    .then(answer => {
+      if (answer.choices === 'Sim') {
+        urlInbraep = 'http://localhost:8080'
+        urlparceiro = 'http://localhost:8081'
+        walkerMassCreation()
+      } else {
+        walkerPortAdmin()
       }
     })
 }
