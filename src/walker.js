@@ -327,7 +327,7 @@ async function walkerClientPartnerPF() {
   await page.type('#confirmed-email', data.email);
   await page.type('#password', '123123');
   await page.type('#confirmed-pass', '123123');
-  await page.click('span.icon.dropdown-toggle');
+  await page.click('acceptTerm');
   await page.click('button.btn.bg-blue.pull-right');
   // descomenta aqui se quiser fechar o browser depois que faz o parceiro
   // await browser.close();
@@ -368,7 +368,7 @@ async function walkerInbraepClientPF() {
   await page.type('#confirmed-email', data.email);
   await page.type('#password', '123123');
   await page.type('#confirmed-pass', '123123');
-  await page.click('span.icon.dropdown-toggle');
+  await page.click('#acceptTerm');
   await page.click('button.btn.bg-blue.pull-right');
   // descomenta aqui se quiser fechar o browser depois que faz o parceiro
   // await browser.close();
@@ -414,7 +414,7 @@ async function walkerInbraepClientPJ() {
   await page.type('#confirmed-email', data.email);
   await page.type('#password', '123123');
   await page.type('#confirmed-pass', '123123');
-  await page.click('span.icon.dropdown-toggle');
+  await page.click('#acceptTerm');
   await page.click('button.btn.bg-blue.pull-right');
   // descomenta aqui se quiser fechar o browser depois que faz o parceiro
   // await browser.close();
