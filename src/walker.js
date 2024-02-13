@@ -327,7 +327,7 @@ async function walkerClientPartnerPF() {
   await page.type('#confirmed-email', data.email);
   await page.type('#password', '123123');
   await page.type('#confirmed-pass', '123123');
-  await page.click('acceptTerm');
+  await page.click('#acceptTerm');
   await page.click('button.btn.bg-blue.pull-right');
   // descomenta aqui se quiser fechar o browser depois que faz o parceiro
   // await browser.close();
