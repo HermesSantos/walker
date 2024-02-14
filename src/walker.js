@@ -215,7 +215,9 @@ async function walkerPartner() {
 
   await page.waitForSelector('#company_brand');
   await page.type('#company_brand', data.brand);
+  //verify later
   await page.type('#phone_number', data.phone);
+
   await page.type('#company_email', data.email);
   const [fileChoser] = await Promise.all([
     page.waitForFileChooser(),
