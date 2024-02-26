@@ -378,7 +378,7 @@ async function walkerInbraepClientPF() {
 
 async function walkerInbraepClientPJ() {
   const data = {
-    name: getName(),
+    name: getName() + ' ' + getName(),
     cnpj: generateCnpj(),
     cpf: getCPF(),
     phone: generatePhoneNumber(),
@@ -396,7 +396,6 @@ async function walkerInbraepClientPJ() {
   const page = await browser.newPage();
 
   await page.goto(url);
-
   await page.setViewport({ width: 1080, height: 1024 });
 
   const xpath = `//*[contains(text(), 'Pessoa Jurídica')]`;
