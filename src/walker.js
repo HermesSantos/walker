@@ -457,5 +457,4 @@ async function walkerInbraepClientPJ() {
   // descomenta aqui se quiser fechar o browser depois que faz o parceiro
   // await browser.close();
 }
-// walkerInitial()
 walkerAtt()
