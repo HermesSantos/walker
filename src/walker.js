@@ -24,6 +24,7 @@ function walkerAtt() {
         console.log(`Walker version V${version}`)
         walkerInitial()
       } else {
+        console.log('oi gato')
         updateWalker()
       }
     }
@@ -457,5 +458,4 @@ async function walkerInbraepClientPJ() {
   // descomenta aqui se quiser fechar o browser depois que faz o parceiro
   // await browser.close();
 }
-// walkerInitial()
 walkerAtt()
