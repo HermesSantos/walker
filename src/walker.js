@@ -13,18 +13,15 @@ import { exec } from 'node:child_process';
 let urlInbraep = ''
 let urlparceiro = ''
 let counter = 1
+const version = '1.1.3'
 
 function walkerAtt() {
-  exec('git fetch', (err, output) => {
-    if (err) {
-      console.log(err)
-    }
-  })
-  exec('git fetch', (err, output) => {
+  exec('git pull', (err, output) => {
     if (err) {
       console.log(err)
     } else {
-      if (output === '') {
+      if (output === 'Already up to date.\n') {
+        console.log(`Walker version V${version}`)
         walkerInitial()
       } else {
         updateWalker()
