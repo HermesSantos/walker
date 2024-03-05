@@ -7,12 +7,51 @@ import { getCPF } from './helpers/cpf.js';
 import { generatePhoneNumber } from './helpers/phone.js';
 import { generateEmail } from './helpers/email.js';
 import { makeHost } from './helpers/host.js'
+import { exec } from 'node:child_process';
 
 
 let urlInbraep = ''
 let urlparceiro = ''
 let counter = 1
 
+function walkerAtt() {
+  exec('git fetch', (err, output) => {
+    if (err) {
+      console.log(err)
+    }
+  })
+  exec('git fetch', (err, output) => {
+    if (err) {
+      console.log(err)
+    } else {
+      if (output === '') {
+        walkerInitial()
+      } else {
+        updateWalker()
+      }
+    }
+  })
+}
+const updateWalker = () => {
+  inquirer.prompt([
+    {
+      type: 'list',
+      name: 'update',
+      message: 'Há uma atualização disponível, deseja atualizar?',
+      choices: ['Sim', 'Não']
+    }
+  ]).then(choice => {
+    if (choice.update === 'Sim') {
+      exec('git pull', (err, output) => {
+        if (err) {
+          console.log(err)
+        } else {
+          console.log('Walker atualizado com sucesso')
+        }
+      })
+    }
+  })
+}
 const walkerInitial = () => {
   inquirer.
     prompt([
@@ -421,4 +460,5 @@ async function walkerInbraepClientPJ() {
   // descomenta aqui se quiser fechar o browser depois que faz o parceiro
   // await browser.close();
 }
-walkerInitial()
+// walkerInitial()
+walkerAtt()
