@@ -22,7 +22,8 @@ function walkerAtt() {
   })
   exec('git fetch', (err, output) => {
     if (err) {
-      console.log(err)
+      let teste = err
+      console.log(teste)
     } else {
       if (output === '') {
         walkerInitial()
