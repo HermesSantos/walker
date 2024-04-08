@@ -1,6 +1,7 @@
 # Instruções de Uso
+![alt text]('./walker.png')
 
-Este guia fornece um passo a passo para configurar e executar o projeto. Certifique-se de seguir cada etapa para garantir uma experiência suave.
+Este guia fornece um passo a passo para configurar e executar o projeto. Certifique-se de seguir cada etapa para garantir uma ótima suave.
 
 ## Pré-requisitos
 
