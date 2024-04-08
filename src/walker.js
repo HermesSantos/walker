@@ -24,7 +24,6 @@ function walkerAtt() {
         console.log(`Walker version V${version}`)
         walkerInitial()
       } else {
-        console.log('oi gato')
         updateWalker()
       }
     }
