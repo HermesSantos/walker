@@ -1,5 +1,5 @@
 # Instruções de Uso
-![screenshot](walker.png height="200")
+![screenshot](walker_200.png)
 
 Este guia fornece um passo a passo para configurar e executar o projeto. Certifique-se de seguir cada etapa para garantir uma ótima suave.
 
