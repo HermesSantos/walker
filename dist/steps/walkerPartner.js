@@ -1,4 +1,4 @@
-import * as puppeteer from 'puppeteer';
+import puppeteer from 'puppeteer';
 import path from 'path';
 import { getName } from '../helpers/name.js';
 import { generateCnpj } from '../helpers/cnpj.js';
