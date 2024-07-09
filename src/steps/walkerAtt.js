@@ -5,7 +5,7 @@ import { updateWalker } from './updateWalker.js';
 export const walkerAtt = () => {
   exec('git pull', (err, output) => {
     if (err) {
-      console.log(err)
+      console.log('Error: ', err)
     } else {
       if (output === 'Already up to date.\n') {
         walkerInitial()

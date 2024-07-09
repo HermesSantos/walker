@@ -4,10 +4,12 @@ import { getCPF } from '../helpers/cpf.js';
 import { generatePhoneNumber } from '../helpers/phone.js';
 import { generateEmail } from '../helpers/email.js';
 import { makeHost } from '../helpers/host.js';
+// import {getOs} from '../helpers/os.js'
 
 import puppeteer from 'puppeteer';
 
 import path from 'path'
+import {getOs} from "../helpers/os.js";
 
 export const walkerClientPartnerPF = async (urlInbraep, urlparceiro) => {
   const data = {
@@ -24,6 +26,7 @@ export const walkerClientPartnerPF = async (urlInbraep, urlparceiro) => {
   const url = `${urlparceiro}/register`
   console.log('Cliente Parceiro PF criado: ', data)
   const browser = await puppeteer.launch({
+    executablePath: getOs(),
     headless: false
   });
   const page = await browser.newPage();

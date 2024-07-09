@@ -6,6 +6,7 @@ import { generatePhoneNumber } from "../helpers/phone.js"
 
 import path from 'path'
 import puppeteer from 'puppeteer';
+import {getOs} from "../helpers/os.js";
 
 export const walkerClientPartnerPJ = async (urlInbraep, urlparceiro) => {
   const data = {
@@ -17,10 +18,10 @@ export const walkerClientPartnerPJ = async (urlInbraep, urlparceiro) => {
   }
   // converte o caminho para um caminho absoluto do arquivo
   const filePath = path.resolve('sample.pdf')
-  console.log(filePath)
   const url = `${urlparceiro}/register`
   console.log('Cliente Parceiro PJ criado: ', data)
   const browser = await puppeteer.launch({
+    executablePath: getOs(),
     headless: false
   });
   const page = await browser.newPage();

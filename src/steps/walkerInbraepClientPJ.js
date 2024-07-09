@@ -7,6 +7,7 @@ import { getCPF } from '../helpers/cpf.js';
 import { generatePhoneNumber } from '../helpers/phone.js';
 import { generateEmail } from '../helpers/email.js';
 import { makeHost } from '../helpers/host.js';
+import {getOs} from "../helpers/os.js";
 
 export const walkerInbraepClientPJ = async (urlInbraep, urlparceiro) => {
   const data = {
@@ -19,10 +20,10 @@ export const walkerInbraepClientPJ = async (urlInbraep, urlparceiro) => {
   }
   // converte o caminho para um caminho absoluto do arquivo
   const filePath = path.resolve('sample.pdf')
-  console.log(filePath)
   const url = `${urlInbraep}/register`
   console.log('Cliente Inbraep PJ criado: ', data)
   const browser = await puppeteer.launch({
+    executablePath: getOs(),
     headless: false
   });
   const page = await browser.newPage();

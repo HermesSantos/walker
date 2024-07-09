@@ -10,7 +10,7 @@ export const updateWalker = () => {
     if (choice.update === 'Sim') {
       exec('git pull', (err, output) => {
         if (err) {
-          console.log(err)
+          console.log('Erro', err)
         } else {
           console.log('Walker atualizado com sucesso')
         }

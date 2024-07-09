@@ -8,6 +8,7 @@ import { getCPF } from '../helpers/cpf.js';
 import { generatePhoneNumber } from '../helpers/phone.js';
 import { generateEmail } from '../helpers/email.js';
 import { makeHost } from '../helpers/host.js';
+  import { getOs } from "../helpers/os.js";
 
 export const walkerPartner = async (urlInbraep, urlparceiro) => {
   const data = {
@@ -26,6 +27,7 @@ export const walkerPartner = async (urlInbraep, urlparceiro) => {
 
   console.log('Parceiro criado: ', data)
   const browser = await puppeteer.launch({
+    executablePath: getOs(),
     headless: false
   });
   const page = await browser.newPage();
