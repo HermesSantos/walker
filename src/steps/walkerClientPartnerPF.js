@@ -22,7 +22,6 @@ export const walkerClientPartnerPF = async (urlInbraep, urlparceiro) => {
   }
   // converte o caminho para um caminho absoluto do arquivo
   const filePath = path.resolve('sample.pdf')
-  console.log(filePath)
   const url = `${urlparceiro}/register`
   console.log('Cliente Parceiro PF criado: ', data)
   const browser = await puppeteer.launch({

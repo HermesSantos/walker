@@ -20,7 +20,6 @@ export const walkerInbraepClientPF = async (urlInbraep, urlparceiro) => {
   }
   // converte o caminho para um caminho absoluto do arquivo
   const filePath = path.resolve('sample.pdf')
-  console.log(filePath)
   const url = `${urlInbraep}/register`
   console.log('Cliente Inbraep PF criado: ', data)
   const browser = await puppeteer.launch({

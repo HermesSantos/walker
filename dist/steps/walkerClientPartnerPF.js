@@ -17,7 +17,6 @@ export const walkerClientPartnerPF = async (urlInbraep, urlparceiro) => {
         brand: makeHost()
     };
     const filePath = path.resolve('sample.pdf');
-    console.log(filePath);
     const url = `${urlparceiro}/register`;
     console.log('Cliente Parceiro PF criado: ', data);
     const browser = await puppeteer.launch({

@@ -1,21 +1,25 @@
-import inquirer from 'inquirer';
-import { walkerDefaultPort } from './walkerDefaultPort.js';
-import { walkerPartnerDomain } from './walkerPartnerDomain.js';
-
-export const walkerInitial = () => {
-  inquirer.
-    prompt([
-      {
-        type: 'list',
-        name: 'Enviroment',
-        message: 'Em qual ambiente o usuário será criado?',
-        choices: ['Local', 'Produção']
-      }
-    ]).then(choice => {
-      if (choice.Enviroment === 'Local') {
-        walkerDefaultPort()
-      } else if (choice.Enviroment === 'Produção') {
-        walkerPartnerDomain()
-      }
-    })
-}
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.walkerInitial = void 0;
+var inquirer_1 = require("inquirer");
+var walkerDefaultPort_js_1 = require("./walkerDefaultPort.js");
+var walkerPartnerDomain_js_1 = require("./walkerPartnerDomain.js");
+var walkerInitial = function () {
+    var enviroments = {
+        "Local": walkerDefaultPort_js_1.walkerDefaultPort,
+        "Produção": walkerPartnerDomain_js_1.walkerPartnerDomain
+    };
+    inquirer_1.default.
+        prompt([
+        {
+            type: "list",
+            name: "Environment",
+            message: "Em qual ambiente o usuário será criado?",
+            choices: ["Local", "Produção"]
+        }
+    ])
+        .then(function (choice) {
+        enviroments[choice.Environment]();
+    });
+};
+exports.walkerInitial = walkerInitial;

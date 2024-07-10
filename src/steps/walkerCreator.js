@@ -16,7 +16,6 @@ export const walkerCreator = (counter, urlInbraep, urlparceiro) => {
       }
     ])
     .then(answers => {
-      console.log(counter, urlInbraep, urlparceiro)
       if (answers.choices === 'Parceiro') {
         for (let i = 0; i < counter; i++) {
           walkerPartner(urlInbraep, urlparceiro)

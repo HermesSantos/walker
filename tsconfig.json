@@ -1,17 +1,18 @@
 {
   "compilerOptions": {
     "target": "ES2020",
-    "module": "NodeNext",
-    "rootDir": "./src",
-    "outDir": "./dist",
+    "module": "ESNext",
+    "rootDir": "src",
+    "outDir": "dist",
     "removeComments": true,
+    "moduleResolution": "node",
     "resolveJsonModule": true,
     "allowJs": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "strictNullChecks": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
   },
   "include": [
     "src//*.js",
@@ -19,9 +20,11 @@
     "src//.json",
     "src/**/.ts",
     "src//*.d.ts",
+    "src/**/.d.ts",
     "src//.tsx",
     "src/**/.js",
     "types/*/.d.ts",
-    "node_modules/@types"
+    "node_modules/@types",
+    "src/types/partnerTypes.d.ts"
   ]
 }
