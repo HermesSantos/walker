@@ -25,6 +25,6 @@
     "src/**/.js",
     "types/*/.d.ts",
     "node_modules/@types",
-    "src/types/partnerTypes.d.ts"
+    "src/types/globalTypes.d.ts"
   ]
 }

@@ -8,14 +8,16 @@ import { generateEmail } from "../helpers/email.js";
 import { makeHost } from "../helpers/host.js";
 import { getOs } from "../helpers/os.js";
 export const walkerPartner = async (urlInbraep, urlparceiro) => {
+    const partnerName = getName();
     const data = {
-        name: getName(),
+        name: partnerName,
         cnpj: generateCnpj(),
         cpf: getCPF(),
+        email: generateEmail(partnerName),
         phone: generatePhoneNumber(),
-        email: generateEmail(),
         brand: makeHost()
     };
+    data.email = generateEmail(data.name);
     const filePath = path.resolve("sample.pdf");
     const url = `${urlInbraep}/cadastro-parceiro`;
     console.log("Parceiro criado: ", data);

@@ -11,14 +11,17 @@ import { makeHost } from "../helpers/host.js";
   import { getOs } from "../helpers/os.js";
 
 export const walkerPartner = async (urlInbraep: string, urlparceiro: string): Promise<void> => {
+  const partnerName = getName();
+
   const data: Partner = {
-    name: getName(),
+    name: partnerName,
     cnpj: generateCnpj(),
     cpf: getCPF(),
+    email: generateEmail(partnerName),
     phone: generatePhoneNumber(),
-    email: generateEmail(),
     brand: makeHost()
   };
+  data.email = generateEmail(data.name);
 
   // converte o caminho para um caminho absoluto do arquivo
   const filePath = path.resolve("sample.pdf");
