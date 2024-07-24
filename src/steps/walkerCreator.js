@@ -3,7 +3,7 @@ import { walkerPartner } from './walkerPartner.js';
 import { walkerClientPartnerPJ } from './walkerPartnerClientPartnerPj.js';
 import { walkerClientPartnerPF } from './walkerClientPartnerPF.js';
 import { walkerInbraepClientPF } from './walkerInbraepClientPF.js';
-import { walkerInbraepClientPJ } from './walkerInbraepClientPJ.ts';
+import { walkerInbraepClientPJ } from './walkerInbraepClientPJ.js';
 
 export const walkerCreator = (counter, urlInbraep, urlparceiro) => {
   inquirer.

@@ -35,7 +35,7 @@ export const walkerInbraepClientPJ = async (urlInbraep: string, urlparceiro: str
   const xpath = "//*[contains(text(), 'Pessoa Jurídica')]";
   await page.waitForXPath(xpath);
   const element = await page.$x(xpath);
-  await element[0].click();
+  // await element[0].click();
   await page.waitForSelector("#company");
   await page.type("#company", data.name);
   await page.type("#trade_name", data.name);
