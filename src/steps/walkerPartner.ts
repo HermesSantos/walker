@@ -1,4 +1,4 @@
-import puppeteer, {ElementHandle} from "puppeteer";
+import puppeteer, { ElementHandle } from "puppeteer";
 
 import path from "path";
 
@@ -8,9 +8,12 @@ import { getCPF } from "../helpers/cpf.js";
 import { generatePhoneNumber } from "../helpers/phone.js";
 import { generateEmail } from "../helpers/email.js";
 import { makeHost } from "../helpers/host.js";
-  import { getOs } from "../helpers/os.js";
+import { getOs } from "../helpers/os.js";
 
-export const walkerPartner = async (urlInbraep: string, urlparceiro: string): Promise<void> => {
+export const walkerPartner = async (
+  urlInbraep: string,
+  urlparceiro: string,
+): Promise<void> => {
   const partnerName = getName();
 
   const data: Partner = {
@@ -19,7 +22,7 @@ export const walkerPartner = async (urlInbraep: string, urlparceiro: string): Pr
     cpf: getCPF(),
     email: generateEmail(partnerName),
     phone: generatePhoneNumber(),
-    brand: makeHost()
+    brand: makeHost(),
   };
   data.email = generateEmail(data.name);
 
@@ -31,7 +34,7 @@ export const walkerPartner = async (urlInbraep: string, urlparceiro: string): Pr
   console.log("Parceiro criado: ", data);
   const browser = await puppeteer.launch({
     executablePath: getOs(),
-    headless: false
+    headless: false,
   });
   const page = await browser.newPage();
 
@@ -52,16 +55,23 @@ export const walkerPartner = async (urlInbraep: string, urlparceiro: string): Pr
   await page.type("#confirmed-password", "123123");
   await page.click("button.btn.bg-blue.pull-right");
 
-  await page.waitForSelector("#company_brand");
-  await page.type("#company_brand", data.brand);
+  await page.waitForSelector("#company");
+  await page.type("#company", data.brand);
   //verify later
-  await page.type("#phoneNumberPartner", data.phone);
+  await page.type("#phone", data.phone);
 
-  await page.type("#company_email", data.email);
+  await page.type("#email", data.email);
   const [fileChoser] = await Promise.all([
     page.waitForFileChooser(),
-    page.click("div.dz-default.dz-message")
+    page
+      .waitForSelector("div.dz-default.dz-message", { visible: true })
+      .then(() => {
+        return page.click("div.dz-default.dz-message");
+      }),
   ]);
+  await page.type("#company_brand", "localhost");
+  await page.type("#phoneNumberPartner", data.phone);
+  await page.type("#company_email", data.email);
 
   await fileChoser.accept([filePath]);
 
@@ -73,7 +83,7 @@ export const walkerPartner = async (urlInbraep: string, urlparceiro: string): Pr
   await page.type("#responsible_c_email", data.email);
   await page.type("#responsible_c_phone", data.phone);
   await page.type("#responsible_c_whats", data.phone);
-  await page.select("#billing_config", "Sim");
+  // await page.select("#billing_config", "Sim");
   const xpathSelector = "//button[contains(text(), 'Adicionar')]";
   await page.waitForXPath(xpathSelector);
   const [button] = await page.$x(xpathSelector);

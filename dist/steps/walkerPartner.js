@@ -15,7 +15,7 @@ export const walkerPartner = async (urlInbraep, urlparceiro) => {
         cpf: getCPF(),
         email: generateEmail(partnerName),
         phone: generatePhoneNumber(),
-        brand: makeHost()
+        brand: makeHost(),
     };
     data.email = generateEmail(data.name);
     const filePath = path.resolve("sample.pdf");
@@ -23,7 +23,7 @@ export const walkerPartner = async (urlInbraep, urlparceiro) => {
     console.log("Parceiro criado: ", data);
     const browser = await puppeteer.launch({
         executablePath: getOs(),
-        headless: false
+        headless: false,
     });
     const page = await browser.newPage();
     await page.goto(url);
@@ -40,14 +40,21 @@ export const walkerPartner = async (urlInbraep, urlparceiro) => {
     await page.type("#pass", "123123");
     await page.type("#confirmed-password", "123123");
     await page.click("button.btn.bg-blue.pull-right");
-    await page.waitForSelector("#company_brand");
-    await page.type("#company_brand", data.brand);
-    await page.type("#phoneNumberPartner", data.phone);
-    await page.type("#company_email", data.email);
+    await page.waitForSelector("#company");
+    await page.type("#company", data.brand);
+    await page.type("#phone", data.phone);
+    await page.type("#email", data.email);
     const [fileChoser] = await Promise.all([
         page.waitForFileChooser(),
-        page.click("div.dz-default.dz-message")
+        page
+            .waitForSelector("div.dz-default.dz-message", { visible: true })
+            .then(() => {
+            return page.click("div.dz-default.dz-message");
+        }),
     ]);
+    await page.type("#company_brand", "localhost");
+    await page.type("#phoneNumberPartner", data.phone);
+    await page.type("#company_email", data.email);
     await fileChoser.accept([filePath]);
     await page.type("#cep", "68929516");
     await page.type("#number", "12");
@@ -57,7 +64,6 @@ export const walkerPartner = async (urlInbraep, urlparceiro) => {
     await page.type("#responsible_c_email", data.email);
     await page.type("#responsible_c_phone", data.phone);
     await page.type("#responsible_c_whats", data.phone);
-    await page.select("#billing_config", "Sim");
     const xpathSelector = "//button[contains(text(), 'Adicionar')]";
     await page.waitForXPath(xpathSelector);
     const [button] = await page.$x(xpathSelector);
