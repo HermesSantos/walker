@@ -12,7 +12,6 @@ import { getOs } from "../helpers/os.js";
 
 export const walkerPartner = async (
   urlInbraep: string,
-  urlparceiro: string,
 ): Promise<void> => {
   const partnerName = getName();
 

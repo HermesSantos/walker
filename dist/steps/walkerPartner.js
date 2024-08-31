@@ -7,7 +7,7 @@ import { generatePhoneNumber } from "../helpers/phone.js";
 import { generateEmail } from "../helpers/email.js";
 import { makeHost } from "../helpers/host.js";
 import { getOs } from "../helpers/os.js";
-export const walkerPartner = async (urlInbraep, urlparceiro) => {
+export const walkerPartner = async (urlInbraep) => {
     const partnerName = getName();
     const data = {
         name: partnerName,
