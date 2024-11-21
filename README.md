@@ -20,9 +20,20 @@ Este guia fornece um passo a passo para configurar e executar o projeto. Certifi
 
 6. **Execução Local**: Inicie o servidor local executando o seguinte comando:
 
+   Usando o NPM
     ```bash
     npm run dev
     ```
-7. **Dados do Parceiro**: Os dados do parceiro criado serão mostrados no terminal
+    
+    Usando o Yarn
+    ```bash
+    yarn install
+    ```
+    
+   Usando o Bun
+    ```bash
+    bun install
+    ```
+8. **Dados do Parceiro**: Os dados do parceiro criado serão mostrados no terminal
 
 Para encerrar a execução do servidor local, pressione `Ctrl + C` no terminal onde o servidor está sendo executado.
