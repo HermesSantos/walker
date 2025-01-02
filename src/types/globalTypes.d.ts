@@ -15,3 +15,5 @@ type  InbraepClientPJ = {
     email: string,
     brand: string
 };
+
+type Environment =  "Local" | "Produção"

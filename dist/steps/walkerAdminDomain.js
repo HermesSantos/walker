@@ -6,11 +6,11 @@ export const walkerAdminDomain = (urlparceiro) => {
         {
             type: 'input',
             name: 'Domain',
-            message: 'Qual o domínio do admin Inbraep?: ',
+            message: 'Qual o domínio do admin Inbraep?: será: ' + `${process.env.ADMIN_DOMAIN}`,
         }
     ])
         .then(answer => {
-        let urlInbraep = `https://${answer.Domain}.treinamento.online`;
+        let urlInbraep = `${process.env.ADMIN_DOMAIN}`;
         walkerMassCreation(urlInbraep, urlparceiro);
     });
 };
