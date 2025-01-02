@@ -3,11 +3,11 @@ import { walkerInitial } from "./walkerInitial.js";
 import { updateWalker } from "./updateWalker.js";
 
 export const walkerAtt = (): void => {
-  exec("git pull", (err, output) => {
+  exec("git pull origin main", (err, output) => {
     if (err) {
       console.log("Error: ", err);
     } else {
-      if (output === "Already up to date.\n") {
+      if (output.includes("Already up to date.\n")) {
         walkerInitial();
       } else {
         updateWalker();

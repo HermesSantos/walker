@@ -7,7 +7,7 @@ export const walkerAdminDomain = (urlparceiro) => {
       {
         type: 'input',
         name: 'Domain',
-        message: 'Qual o domínio do admin Inbraep?: será: ' + `${process.env.ADMIN_DOMAIN}`,
+        message: 'O domínio do admin Inbraep será: ' + `${process.env.ADMIN_DOMAIN}`,
       }
     ])
     .then(answer => {

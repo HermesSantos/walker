@@ -15,6 +15,8 @@ Este guia fornece um passo a passo para configurar e executar o projeto. Certifi
 
     ```bash
     npm install
+
+4. **Configuração do .env**: Adicione as URLs corretas no arquivo .env.
     ```
 ## Execução
 
